@@ -68,15 +68,14 @@
         mkp_exit_AML: mkp_exit_AML {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
-            bindings =<
-                &macro_press
-                &macro_param_1to1 &mkp MACRO_PLACEHOLDER
-                &macro_pause_for_release
-                &macro_release
-                &macro_param_1to1 &mkp MACRO_PLACEHOLDER
-                &macro_tap
-                &sl 0
-           >;
+            bindings =
+                <&macro_press>,
+                <&macro_param_1to1 &mkp MACRO_PLACEHOLDER>,
+                <&macro_pause_for_release>,
+                <&macro_release>,
+                <&macro_param_1to1 &mkp MACRO_PLACEHOLDER>,
+                <&macro_tap>,
+                <&sl 0>;
 
             label = "MKP_EXIT_AML";
         };
@@ -96,11 +95,12 @@
             compatible = "zmk,behavior-sensor-rotate";
             label = "ENCODER_MSC_DOWN_UP";
             #sensor-binding-cells = <0>;
-            bindings = <&msc SCRL_UP>,<&msc SCRL_DOWN> ;
+            bindings = <&msc SCRL_UP>, <&msc SCRL_DOWN>;
+
             tap-ms = <20>;
         };
     };
-   
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -112,9 +112,9 @@
 &kp LCTRL         &kp LEFT_WIN  &kp LEFT_ALT  &lt 1 RIGHT_ALT  &lt 2 SPACE  &lt 3 LEFT_SHIFT      &kp BACKSPACE   &lt 6 ENTER                             &kp DEL
             >;
 
-            sensor-bindings = <&inc_dec_kp PAGE_DOWN PAGE_UP>;
-                    sensor-bindings = <&encoder_msc_down_up>;
-};
+            sensor-bindings = <&encoder_msc_down_up>;
+            sensor-bindings = <&encoder_msc_down_up>;
+        };
 
         SYMBOL {
             bindings = <
@@ -141,8 +141,6 @@
 &none     &kp LG(LEFT_ARROW)  &kp LG(UP_ARROW)  &kp LG(RIGHT_ARROW)  &none    &trans      &none   &none     &kp LG(LEFT_ARROW)  &kp LG(UP_ARROW)  &kp LG(RIGHT_ARROW)  &none
 &trans    &trans              &trans            &trans               &trans   &trans      &trans  &trans                                                               &none
             >;
-
-            sensor-bindings = <&inc_dec_kp LC(PAGE_UP) LC(PAGE_DOWN)>;
         };
 
         MOUSE {
@@ -152,8 +150,6 @@
 &to_layer_0 Z  &to_layer_0 X  &to_layer_0 C  &to_layer_0 V  &to_layer_0 LC(V)  &trans      &to_layer_0 EQUAL       &to_layer_0 N  &mkp_exit_AML MB4  &to_layer_0 COMMA  &mkp_exit_AML MB5  &to_layer_0 SLASH
 &trans         &trans         &trans         &trans         &trans             &trans      &trans                  &trans                                                                  &kp DEL
             >;
-
-            sensor-bindings = <&inc_dec_kp PAGE_DOWN PAGE_UP>;
         };
 
         SCROLL {
